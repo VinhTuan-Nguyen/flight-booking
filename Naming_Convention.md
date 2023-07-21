@@ -46,4 +46,16 @@
 ![image](https://github.com/VinhTuan-Nguyen/flight-booking/assets/90610857/725f08af-b14b-4d8e-86ed-ccd7b1235c0b)
 
 ## 3. Files Naming Convention
-  
+- File name must have lowercase and hyphen between each word
+
+## 4. Git
+- Create branch brief and concise for each child task
+- Before push commit into your branch, check Development branch status
+- If find out new update, pull and merge into your branch then re-push into git
+- After create Pull Request, ping another member review theses code and waiting for approve 
+- follow these below to create new branch
+
+### 4.1. Branch Name
+- Root Branch: `main`
+- Development Branch: `Development`
+- Feature Branch: `<Project Name>`/feature/`<Feature Implement>`
