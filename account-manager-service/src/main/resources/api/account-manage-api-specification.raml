@@ -1,0 +1,26 @@
+#%RAML 1.0
+title: fdsafds
+protocols: [ HTTP, HTTPS ]
+version: 1.0.0
+mediaType: application/json
+
+types:
+  accountInfo: !include './dataTypes/datatype-account-login.raml'
+  pingResponse: !include './dataTypes/datatype-health-check-response.raml'
+
+/ping:
+    get:
+        responses:
+            200:
+                body:
+                    type: pingResponse
+
+/login:
+    post:
+        body:
+            type: accountInfo
+        responses:
+            200:
+                body:
+                    application/json:
+
