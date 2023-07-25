@@ -1,0 +1,15 @@
+# Use postgres/example user/password credentials
+version: '3.3'
+services:
+  db:
+    container_name: flight_booking_transaction_mysql
+    image: mysql
+    restart: always
+    ports:
+      - 3306:3306
+    volumes: ['/Users/coma/Workspace/flight-booking/paymentservice/containers/db:/var/lib/mysql']
+    environment:
+      MYSQL_ROOT_PASSWORD: 1
+      MYSQL_DATABASE: flight_booking_transaction_mysql
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: 1
