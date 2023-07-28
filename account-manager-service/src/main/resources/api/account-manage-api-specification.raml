@@ -4,23 +4,36 @@ protocols: [ HTTP, HTTPS ]
 version: 1.0.0
 mediaType: application/json
 
-types:
-  accountInfo: !include './dataTypes/datatype-account-login.raml'
-  pingResponse: !include './dataTypes/datatype-health-check-response.raml'
-
 /ping:
+  get:
+    description: Get Health Check Response Status
+    responses:
+      200:
+        body:
+          application/json:
+
+/accounts:
+  get:
+    description: Get All Users Account Info
+    responses:
+      200:
+        description: Get All Users Account Info Successfully
+        body:
+          application/json:
+  /{user_id}:
     get:
-        responses:
-            200:
-                body:
-                    type: pingResponse
+      description: Get An User Account Info
 
 /login:
-    post:
+  post:
+    responses:
+      200:
         body:
-            type: accountInfo
-        responses:
-            200:
-                body:
-                    application/json:
+          application/json:
+  /attemps:
+    get:
+      responses:
+        200:
+          body:
+            application/json:
 
