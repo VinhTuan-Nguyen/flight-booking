@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -9,15 +11,19 @@
         <relativePath />
         <!-- lookup parent from repository -->
     </parent>
+
     <groupId>flightbooking.microservices</groupId>
     <artifactId>account-manager-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+
     <name>account-manager-service</name>
     <description>Demo project for Spring Boot</description>
+
     <properties>
         <java.version>11</java.version>
         <mysql.connector.version>8.0.33</mysql.connector.version>
     </properties>
+
     <build>
         <plugins>
             <plugin>
@@ -32,29 +38,9 @@
                     </excludes>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>com.phoenixnap.oss</groupId>
-                <artifactId>springmvc-raml-plugin</artifactId>
-                <version>2.0.5</version>
-                <configuration>
-                    <ramlPath>src/main/resources/api/account-manage-api-specification.raml</ramlPath>
-                    <outputRelativePath>src/main/java</outputRelativePath>
-                    <basePackage>flightbooking.microservices.accountmanagerservice.controllers</basePackage>
-                    <baseUri>/accounts</baseUri>
-                    <rule>com.phoenixnap.oss.ramlplugin.raml2code.rules.Spring4ControllerInterfaceRule</rule>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>generate-springmvc-endpoints</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>generate-springmvc-endpoints</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
     </build>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -71,26 +57,23 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.20</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysql.connector.version}</version>
             <scope>runtime</scope>
         </dependency>
-        <dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-            <version>2.6</version>
-        </dependency>
-        <dependency>
-            <groupId>com.googlecode.json-simple</groupId>
-            <artifactId>json-simple</artifactId>
-            <version>1.1</version>
-        </dependency>
     </dependencies>
+
     <repositories>
         <repository>
             <id>spring-milestones</id>
@@ -109,6 +92,7 @@
             </releases>
         </repository>
     </repositories>
+
     <pluginRepositories>
         <pluginRepository>
             <id>spring-milestones</id>

@@ -9,11 +9,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 
-/**
- * No description
- * (Generated with springmvc-raml-parser v.2.0.5)
- *
- */
 @RestController
 @Validated
 @RequestMapping(value = "/accounts", produces = "application/json")
