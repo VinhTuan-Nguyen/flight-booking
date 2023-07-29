@@ -1,4 +1,4 @@
-package flightbooking.microservices.accountmanagerservice.models.entities;
+package flightbooking.microservices.accountmanagerservice.model;
 
 import java.io.Serializable;
 
