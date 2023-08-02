@@ -1,0 +1,23 @@
+server:
+  port: 8081
+  address: localhost
+
+spring:
+
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/users
+    username: admin
+    password: admin
+
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 1078895256638-o9lmj51ljlk3fjst458sjm2g4fbsv1oj.apps.googleusercontent.com
+            client-secret: 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
+            redirect-uri: http://localhost:8081/login
