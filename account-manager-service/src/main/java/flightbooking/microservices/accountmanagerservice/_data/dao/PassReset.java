@@ -16,7 +16,9 @@ import lombok.NoArgsConstructor;
 public class PassReset implements Serializable {
 
     @Id
-    private String id;
+    @Column
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     @Column(nullable = false)
     private String ipAddress;
@@ -38,4 +40,15 @@ public class PassReset implements Serializable {
 
     @Column(nullable = false)
     private String type;
+
+    public PassReset(String ipAddress, String createBy, String userId, String oldPass, String newPass,
+            LocalDateTime createdDate, String type) {
+        this.ipAddress = ipAddress;
+        this.createBy = createBy;
+        this.userId = userId;
+        this.oldPass = oldPass;
+        this.newPass = newPass;
+        this.createdDate = createdDate;
+        this.type = type;
+    }
 }

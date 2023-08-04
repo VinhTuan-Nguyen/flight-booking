@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 public class RolePermission implements Serializable {
 
     @Id
-    private String id;
+    private Long id;
 
     @Column
     private String roleName;

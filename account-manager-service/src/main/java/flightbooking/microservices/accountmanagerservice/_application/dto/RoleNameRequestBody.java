@@ -4,14 +4,13 @@ import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
-public class LoginFormRequestBody {
+public class RoleNameRequestBody {
 
-    @NotNull(message = "This is a madantory field")
-    private String userId;
-
-    @NotNull(message = "This is a madantory field")
-    private String password;
+    @NotNull(message = "This field Is Mandatory")
+    private String roleName;
 }

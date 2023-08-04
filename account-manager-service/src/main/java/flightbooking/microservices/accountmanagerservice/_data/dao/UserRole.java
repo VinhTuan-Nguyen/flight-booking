@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 public class UserRole implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
 
     @Column

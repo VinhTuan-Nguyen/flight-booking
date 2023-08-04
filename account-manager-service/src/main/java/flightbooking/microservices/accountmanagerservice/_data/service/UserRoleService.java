@@ -1,9 +1,16 @@
 package flightbooking.microservices.accountmanagerservice._data.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-@Service
-public interface UserRoleService {
+import flightbooking.microservices.accountmanagerservice._data.service.repository.UserRoleRepository;
 
-    public boolean checkRole(Long userId);
+@Service
+public class UserRoleService {
+    @Autowired
+    UserRoleRepository userRoleRepository;
+
+    public boolean checkRole(Long userId) {
+        return false;
+    }
 }

@@ -15,9 +15,12 @@ import lombok.NoArgsConstructor;
 public class User implements Serializable {
 
     @Id
-    @Column()
+    @Column
     private String userId;
 
-    @Column()
+    @Column
     private String password;
+
+    @Column
+    private String salt;
 }

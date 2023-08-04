@@ -6,7 +6,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: update
 
   datasource:
     url: jdbc:mysql://localhost:3306/users
@@ -20,4 +20,4 @@ spring:
           google:
             client-id: 1078895256638-o9lmj51ljlk3fjst458sjm2g4fbsv1oj.apps.googleusercontent.com
             client-secret: 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
-            redirect-uri: http://localhost:8081/login
+            redirect-uri: http://localhost:8081/accounts/login

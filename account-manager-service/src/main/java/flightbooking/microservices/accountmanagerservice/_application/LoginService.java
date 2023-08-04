@@ -1,19 +1,20 @@
 package flightbooking.microservices.accountmanagerservice._application;
 
 import java.time.LocalDateTime;
-import java.util.Map;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import flightbooking.microservices.accountmanagerservice._application.dto.CustomResponse;
-import flightbooking.microservices.accountmanagerservice._application.dto.LoginFormRequestBody;
+import flightbooking.microservices.accountmanagerservice._application.dto.internalLoginForm;
+import flightbooking.microservices.accountmanagerservice._data.dao.Profile;
 import flightbooking.microservices.accountmanagerservice._data.dao.User;
+import flightbooking.microservices.accountmanagerservice._data.service.ProfileService;
 import flightbooking.microservices.accountmanagerservice._data.service.UserService;
 import flightbooking.microservices.accountmanagerservice._presentation.LoginInterface;
 
@@ -21,23 +22,23 @@ import flightbooking.microservices.accountmanagerservice._presentation.LoginInte
 public class LoginService implements LoginInterface {
     @Autowired
     UserService userService;
+    @Autowired
+    ProfileService profileService;
 
     User user = new User();
 
     @Override
-    public ResponseEntity<CustomResponse> internalLogin(@Valid @RequestBody LoginFormRequestBody payload) {
+    public ResponseEntity<CustomResponse> internalLogin(@Valid @RequestBody internalLoginForm payload) {
+        internalLoginForm loginUser = new internalLoginForm(payload.getUserId(), payload.getPassword());
 
-        user.setUserId(payload.getUserId());
-        user.setPassword(payload.getPassword());
-
-        if (userService.authenticate(user)) {
+        if (userService.authenticate(loginUser)) {
 
             CustomResponse newResponse = new CustomResponse(
                     "ACCEPTED",
                     "Login Successfully",
                     LocalDateTime.now());
 
-            return ResponseEntity.status(200).body(newResponse);
+            return ResponseEntity.status(HttpStatus.ACCEPTED).body(newResponse);
         } else {
 
             CustomResponse newResponse = new CustomResponse(
@@ -45,14 +46,22 @@ public class LoginService implements LoginInterface {
                     "userId Or password went wrong",
                     LocalDateTime.now());
 
-            return ResponseEntity.status(401).body(newResponse);
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(newResponse);
         }
     }
 
     @Override
-    public ResponseEntity<?> externalLogin(OAuth2AuthenticationToken oAuth2AuthenticationToken) {
-        Map<String, Object> google = oAuth2AuthenticationToken.getPrincipal().getAttributes();
-        System.out.print(google);
-        return ResponseEntity.status(200).body(google);
+    public ResponseEntity<?> externalLogin() {
+        // To Do SomeThing Here
+        if(profileService.isExisting("emailAddress")) {
+            Profile profile = new Profile();
+            //profileService.register(profile);
+            profile.toString();
+        }
+        CustomResponse newResponse = new CustomResponse(
+                "SUCCESS",
+                "Login Successfully",
+                LocalDateTime.now());
+        return ResponseEntity.status(200).body(newResponse);
     }
 }
